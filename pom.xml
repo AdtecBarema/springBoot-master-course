@@ -17,6 +17,10 @@
         <java.version>11</java.version>
     </properties>
     <dependencies>
+<!--       Webservers: Tomcat, Jetty
+ -  Tomcat: By default its  is embedded  within spring-boot-starter-web, no need of adding maven dependency
+ -  Jetty (, or other webserver): First we need to exclude the default webserver using "exclusions"tag
+                                  Then we need to add maven dependency of the new webserver.-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
