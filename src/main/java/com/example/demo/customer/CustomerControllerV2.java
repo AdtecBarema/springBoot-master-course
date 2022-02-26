@@ -1,30 +1,31 @@
 package com.example.demo.customer;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "api/v2/customer")
-@Deprecated
+@RequestMapping(path = "api/v2/customers")
 public class CustomerControllerV2 {
+
 
     private final CustomerService customerService;
 
+    @Autowired
     public CustomerControllerV2 (CustomerService customerService) {
         this.customerService = customerService;
     }
 
     @GetMapping(value = "all")
-    List <Customer> getCustomer () {
-        return Arrays.asList (
-                        new Customer (1L, "Addisu","myPass"),
-                        new Customer (2l, "Dagne","DagnePassword"));
-                  }
+    List <Customer> getCustomers () {
+        return customerService.getcustomers ();
+    }
 
     @PostMapping
-    void createNewCustomer (@RequestBody Customer customer) {
+    void createNewCustomer (@RequestBody @Valid  Customer customer) {
+
         System.out.println ("Post Request");
         System.out.println (customer);
     }
@@ -36,8 +37,17 @@ public class CustomerControllerV2 {
 
     @PutMapping(path = "{customerID}")
     void updateCustomer (@RequestBody Customer customer, @PathVariable("customerID") Long id) {
-        Long oldCustomerId = customer.getId ();
-        System.out.println ("Update customer request...");
+         System.out.println ("Update customer request...");
         System.out.println (customer);
+    }
+
+    @GetMapping(path="{customerId}")
+    public Customer getCustomers (@PathVariable ("customerId") Long id){
+        return
+                customerService.getcustomers ()
+                .stream ()
+                .filter (cust->cust.getId ().equals (id))
+                .findFirst ()
+                .orElseThrow (()-> new IllegalStateException ("Customer not found "));
     }
 }
