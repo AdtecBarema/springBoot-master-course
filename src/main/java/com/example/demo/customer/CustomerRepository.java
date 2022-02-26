@@ -17,7 +17,7 @@ public class CustomerRepository  implements CustomerRepo {
         //TODO connect to real DB
         public List <Customer> getCustomers () {
             return Arrays.asList (
-                    new Customer (1L, "TODO connect to real DB")
+                    new Customer (1L, "TODO connect to real DB","TOBD")
 
             );
           }
