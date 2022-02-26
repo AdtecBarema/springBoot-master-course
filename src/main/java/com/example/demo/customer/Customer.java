@@ -1,16 +1,25 @@
 package com.example.demo.customer;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
+@Entity
+@Table
 public class Customer {
-    private final Long id;
+    @Id
+    private  Long id;
     @NotBlank
-    private final String name;
+    private  String name;
     @NotBlank
-    private final String password;
+    private  String password;
 
-    private final String email;
+    private  String email;
+
+    public Customer () {
+    }
 
     public Customer (Long id,
                      String name,
