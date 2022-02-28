@@ -47,7 +47,7 @@ public class CustomerControllerV2 {
     @GetMapping(path = "{customerId}")
     public Customer getCustomers (@PathVariable("customerId") Long id) {
         return
-                customerService.getCustomers (id);
+                customerService.getCustomer (id);
     }
 
 
