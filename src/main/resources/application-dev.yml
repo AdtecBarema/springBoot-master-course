@@ -1,0 +1,26 @@
+info:
+    app:
+        description: Master Spring Boot
+        name: SpringBoot Master class
+        version: 1.0.0
+management:
+    endpoint:
+        health:
+            show-details: always
+    endpoints:
+        web:
+            exposure:
+                include: health, info, prometheus
+spring:
+    datasource:
+        driverClassName: org.h2.Driver
+        password: hello
+        url: jdbc:h2:mem:testdb-dev-enviroment
+        username: hello
+    h2:
+        console:
+            enabled: true
+            path: /h2-dev
+    jpa:
+        database-platform: org.hibernate.dialect.H2Dialect
+        show-sql: true
