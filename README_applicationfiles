@@ -1,0 +1,23 @@
+-@Value:
+    to pass/inject application values into the code
+
+-@ConfigurationProperties:
+    Helps to group property files into a single configuration class, so that it would be easier for value management
+
+Spring profiles:
+
+ This is a way we classify our environments (DEV, UAT, PROD) which makes it easy to pass the application properties
+ - Once we set values into application.properties/yaml, then we need to select active profile.
+ - This can be done through edit configuration:
+             - go to configuration,
+             - then  go to program parameter
+             - then put the active profile as follows:
+                --spring.profiles.active=dev
+ - Spring is smart enough to select the profile which is active, and we can check the active profile from springBoot starter
+
+ - application.properties vs application.yaml/yml:
+       -     They are writing style, we can use either of them based on team preference
+       -     Intellij has a plugin, convert YAML and properties, that we can switch back and forth.
+
+
+

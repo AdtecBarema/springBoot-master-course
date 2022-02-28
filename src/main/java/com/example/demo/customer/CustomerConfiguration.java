@@ -1,5 +1,6 @@
 package com.example.demo.customer;
 
+import com.example.demo.infoapp.InfoApp;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -10,10 +11,11 @@ public class CustomerConfiguration {
     @Value ("${app.useFakeCustomerRepo:false}")
     private Boolean useFakeCustomerRepo;
     @Bean
-    CommandLineRunner commandLineRunner(){
+    CommandLineRunner commandLineRunner(InfoApp infoApp){
         return args -> {
             System.out.println ("Hello, this is usage of the @Bean annotation," +
                                         " which is to be instantiated when the application bootstraps");
+            System.out.println (infoApp);
         };
     }
     /**
