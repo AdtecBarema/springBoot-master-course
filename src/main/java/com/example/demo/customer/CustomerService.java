@@ -23,13 +23,13 @@ public class CustomerService {
         this.customerRepository = customerRepo1;
     }
 
-    List <Customer> getcustomers () {
+   public  List <Customer> getcustomers () {
         LOGGER.info ("Get customer was called");
 
         return customerRepository.findAll ();
     }
 
-     Customer getCustomers (@PathVariable("customerId") Long id){
+    public  Customer getCustomer (@PathVariable("customerId") Long id){
 
         return
                 getcustomers ()
@@ -42,4 +42,6 @@ public class CustomerService {
                             return notFoundException;
                         });
     }
+
+
 }
